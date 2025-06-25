@@ -12,3 +12,4 @@ C:\Users\AZUS\OneDrive\Escritorio\Proyectos C#\Estructura de datos\obj\Debug\net
 C:\Users\AZUS\OneDrive\Escritorio\Proyectos C#\Estructura de datos\obj\Debug\net9.0\Estructura de datos.pdb
 C:\Users\AZUS\OneDrive\Escritorio\Proyectos C#\Estructura de datos\obj\Debug\net9.0\Estructura de datos.genruntimeconfig.cache
 C:\Users\AZUS\OneDrive\Escritorio\Proyectos C#\Estructura de datos\obj\Debug\net9.0\ref\Estructura de datos.dll
+C:\Users\AZUS\OneDrive\Escritorio\Proyectos C#\Estructura de datos\obj\Debug\net9.0\Estructura de datos.sourcelink.json
