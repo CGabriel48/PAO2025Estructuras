@@ -26,4 +26,46 @@ namespace AgendaTurnosClinica
             return $"{Nombre} - {Cedula} - {Fecha} - {Hora} - {Especialidad}";
         }
     }
+
+    // Clase que representa la agenda de turnos
+    class AgendaTurnos
+    {
+        private List<Paciente> turnos = new List<Paciente>();
+
+        public void AgregarTurno(Paciente paciente)
+        {
+            turnos.Add(paciente);
+        }
+
+        public void MostrarTurnos()
+        {
+            if (turnos.Count == 0)
+            {
+                Console.WriteLine("No hay turnos registrados.");
+                return;
+            }
+
+            Console.WriteLine("\nListado de turnos:");
+            foreach (var paciente in turnos)
+            {
+                Console.WriteLine(paciente);
+            }
+        }
+
+        public void BuscarPorCedula(string cedula)
+        {
+            var encontrado = turnos.Find(p => p.Cedula == cedula);
+
+            if (encontrado != null)
+            {
+                Console.WriteLine("Turno encontrado:");
+                Console.WriteLine(encontrado);
+            }
+            else
+            {
+                Console.WriteLine("Paciente no encontrado.");
+            }
+        }
+    }
+
 }
