@@ -68,4 +68,25 @@ namespace AgendaTurnosClinica
         }
     }
 
+ // Clase principal del programa
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            AgendaTurnos agenda = new AgendaTurnos();
+
+            // Agregando turnos (se pueden reemplazar por entradas por teclado)
+            agenda.AgregarTurno(new Paciente("1102345678", "Jose Armando", "2025-06-26", "09:00", "Pediatría"));
+            agenda.AgregarTurno(new Paciente("1109876543", "Melany Andrade", "2025-06-26", "10:00", "Dermatología"));
+
+            // Mostrar todos los turnos
+            agenda.MostrarTurnos();
+
+            // Buscar paciente por cédula
+            Console.WriteLine("\nConsulta por cédula:");
+            Console.Write("Ingrese la cédula del paciente: ");
+            string cedula = Console.ReadLine();
+            agenda.BuscarPorCedula(cedula);
+        }
+    }
 }
