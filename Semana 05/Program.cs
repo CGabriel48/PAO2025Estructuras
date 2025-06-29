@@ -1,8 +1,8 @@
 ﻿
 //Ejercicio 2 
-//Escribir un programa que pregunte al usuario los numeros
-//ganadores de la loteria primitiva, los almacene en una 
-//lista y los muestre por pantalla ordenados de menor a mayor
+//Escibir un programa que pregunte por una muestra de números 
+//,separados por comas, los guarde en una lista y muestre
+//por pantalla su media y desviacion tipica
 using System;
 using System.Collections.Generic;
 
