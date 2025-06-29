@@ -1,40 +1,32 @@
 ﻿
-//Ejercicio 3
-//Escibir un programa que pregunte por una muestra de números 
-//,separados por comas, los guarde en una lista y
-//lista y los muestre por pantalla ordenados de menor a mayor
+//Ejercicio 4
+//Escibir un programa que pida al usuario una palabra y muestre
+//en la pantalla si es un palindromo
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Ejercicio3
+namespace Ejercicio4
 {
-    class Estadisticas
+    class Palindromo
     {
-        public List<double> Numeros { get; set; }
+        public string Palabra { get; set; }
 
-        public Estadisticas(string entrada)
+        public Palindromo(string palabra)
         {
-            Numeros = entrada.Split(',').Select(double.Parse).ToList();
+            Palabra = palabra.ToLower();
         }
 
-        public double CalcularMedia()
+        public bool EsPalindromo()
         {
-            return Numeros.Average();
+            string inversa = new string(Palabra.Reverse().ToArray());
+            return Palabra == inversa;
         }
 
-        public double CalcularDesviacionTipica()
+        public void MostrarResultado()
         {
-            double media = CalcularMedia();
-            double suma = Numeros.Sum(n => Math.Pow(n - media, 2));
-            return Math.Sqrt(suma / Numeros.Count);
-        }
-
-        public void MostrarResultados()
-        {
-            Console.WriteLine($"Media: {CalcularMedia():0.00}");
-            Console.WriteLine($"Desviación típica: {CalcularDesviacionTipica():0.00}");
+            if (EsPalindromo())
+                Console.WriteLine("Es un palíndromo.");
+            else
+                Console.WriteLine("No es un palíndromo.");
         }
     }
 
@@ -42,11 +34,11 @@ namespace Ejercicio3
     {
         static void Main()
         {
-            Console.Write("Ingrese números separados por comas: ");
-            string input = Console.ReadLine();
+            Console.Write("Ingrese una palabra: ");
+            string entrada = Console.ReadLine();
 
-            Estadisticas est = new Estadisticas(input);
-            est.MostrarResultados();
+            Palindromo palabra = new Palindromo(entrada);
+            palabra.MostrarResultado();
         }
     }
 }
