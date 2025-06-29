@@ -4,6 +4,7 @@
 //en la pantalla si es un palindromo
 
 using System;
+
 namespace Ejercicio4
 {
     class Palindromo
