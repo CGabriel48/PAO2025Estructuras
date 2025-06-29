@@ -1,42 +1,40 @@
 ﻿
-//Ejercicio 2 
+//Ejercicio 3
 //Escibir un programa que pregunte por una muestra de números 
-//,separados por comas, los guarde en una lista y muestre
-//por pantalla su media y desviacion tipica
+//,separados por comas, los guarde en una lista y
+//lista y los muestre por pantalla ordenados de menor a mayor
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Ejercicio2
+namespace Ejercicio3
 {
-    class Loteria
+    class Estadisticas
     {
-        public List<int> Numeros { get; private set; }
+        public List<double> Numeros { get; set; }
 
-        public Loteria()
+        public Estadisticas(string entrada)
         {
-            Numeros = new List<int>();
+            Numeros = entrada.Split(',').Select(double.Parse).ToList();
         }
 
-        public void LeerNumeros()
+        public double CalcularMedia()
         {
-            Console.WriteLine("Ingrese los 6 números ganadores de la lotería:");
-            for (int i = 0; i < 6; i++)
-            {
-                Console.Write($"Número {i + 1}: ");
-                int num = int.Parse(Console.ReadLine());
-                Numeros.Add(num);
-            }
+            return Numeros.Average();
         }
 
-        public void MostrarOrdenados()
+        public double CalcularDesviacionTipica()
         {
-            Numeros.Sort();
-            Console.WriteLine("Números ordenados:");
-            foreach (int n in Numeros)
-            {
-                Console.Write($"{n} ");
-            }
-            Console.WriteLine();
+            double media = CalcularMedia();
+            double suma = Numeros.Sum(n => Math.Pow(n - media, 2));
+            return Math.Sqrt(suma / Numeros.Count);
+        }
+
+        public void MostrarResultados()
+        {
+            Console.WriteLine($"Media: {CalcularMedia():0.00}");
+            Console.WriteLine($"Desviación típica: {CalcularDesviacionTipica():0.00}");
         }
     }
 
@@ -44,9 +42,11 @@ namespace Ejercicio2
     {
         static void Main()
         {
-            Loteria loteria = new Loteria();
-            loteria.LeerNumeros();
-            loteria.MostrarOrdenados();
+            Console.Write("Ingrese números separados por comas: ");
+            string input = Console.ReadLine();
+
+            Estadisticas est = new Estadisticas(input);
+            est.MostrarResultados();
         }
     }
 }
