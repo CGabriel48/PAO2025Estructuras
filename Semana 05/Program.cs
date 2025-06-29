@@ -1,24 +1,42 @@
-﻿// Ejerciocio 1 
-//Edscribir un programa que almacene las asignaturas de un curso en
-//en una lista y la muestre por panta el mensaje  Yo estudio <asignatura>,
-//donde <asignatura> es cada una de las asignaturas de la lista. 
+﻿
+//Ejercicio 2 
+//Escribir un programa que pregunte al usuario los numeros
+//ganadores de la loteria primitiva, los almacene en una 
+//lista y los muestre por pantalla ordenados de menor a mayor
 using System;
 using System.Collections.Generic;
 
-namespace Ejercicio1
+namespace Ejercicio2
 {
-    class Asignatura
+    class Loteria
     {
-        public string Nombre { get; set; }
+        public List<int> Numeros { get; private set; }
 
-        public Asignatura(string nombre)
+        public Loteria()
         {
-            Nombre = nombre;
+            Numeros = new List<int>();
         }
 
-        public void Mostrar()
+        public void LeerNumeros()
         {
-            Console.WriteLine($"Yo estudio {Nombre}");
+            Console.WriteLine("Ingrese los 6 números ganadores de la lotería:");
+            for (int i = 0; i < 6; i++)
+            {
+                Console.Write($"Número {i + 1}: ");
+                int num = int.Parse(Console.ReadLine());
+                Numeros.Add(num);
+            }
+        }
+
+        public void MostrarOrdenados()
+        {
+            Numeros.Sort();
+            Console.WriteLine("Números ordenados:");
+            foreach (int n in Numeros)
+            {
+                Console.Write($"{n} ");
+            }
+            Console.WriteLine();
         }
     }
 
@@ -26,19 +44,9 @@ namespace Ejercicio1
     {
         static void Main()
         {
-            List<Asignatura> lista = new List<Asignatura>
-            {
-                new Asignatura("Matemáticas"),
-                new Asignatura("Física"),
-                new Asignatura("Química"),
-                new Asignatura("Historia"),
-                new Asignatura("Lengua")
-            };
-
-            foreach (var asignatura in lista)
-            {
-                asignatura.Mostrar();
-            }
+            Loteria loteria = new Loteria();
+            loteria.LeerNumeros();
+            loteria.MostrarOrdenados();
         }
     }
 }
