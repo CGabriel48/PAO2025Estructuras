@@ -1,33 +1,42 @@
 ﻿
-//Ejercicio 4
-//Escibir un programa que pida al usuario una palabra y muestre
-//en la pantalla si es un palindromo
+//Ejercicio 5
+//Escibir un programa que almacene el abecedario en una lista
+//elimine de la lista las letras que ocupen posiciones multiplos
+//de 3 y muestre por pantalla la ista resultante
 
 using System;
+using System.Collections.Generic;
 
-namespace Ejercicio4
+namespace Ejercicio5
 {
-    class Palindromo
+    class Abecedario
     {
-        public string Palabra { get; set; }
+        public List<char> Letras { get; set; }
 
-        public Palindromo(string palabra)
+        public Abecedario()
         {
-            Palabra = palabra.ToLower();
+            Letras = new List<char>();
+            for (char c = 'A'; c <= 'Z'; c++)
+                Letras.Add(c);
         }
 
-        public bool EsPalindromo()
+        public void EliminarMultiplo3()
         {
-            string inversa = new string(Palabra.Reverse().ToArray());
-            return Palabra == inversa;
+            for (int i = Letras.Count - 1; i >= 0; i--)
+            {
+                if ((i + 1) % 3 == 0)
+                    Letras.RemoveAt(i);
+            }
         }
 
-        public void MostrarResultado()
+        public void Mostrar()
         {
-            if (EsPalindromo())
-                Console.WriteLine("Es un palíndromo.");
-            else
-                Console.WriteLine("No es un palíndromo.");
+            Console.WriteLine("Abecedario modificado:");
+            foreach (var letra in Letras)
+            {
+                Console.Write(letra + " ");
+            }
+            Console.WriteLine();
         }
     }
 
@@ -35,11 +44,9 @@ namespace Ejercicio4
     {
         static void Main()
         {
-            Console.Write("Ingrese una palabra: ");
-            string entrada = Console.ReadLine();
-
-            Palindromo palabra = new Palindromo(entrada);
-            palabra.MostrarResultado();
+            Abecedario abc = new Abecedario();
+            abc.EliminarMultiplo3();
+            abc.Mostrar();
         }
     }
 }
